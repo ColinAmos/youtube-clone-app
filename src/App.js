@@ -15,6 +15,12 @@ class App extends React.Component {
         }
     }
 
+    handleVideoClick = (video) => {
+        this.setState({
+            selectedVideo: video
+        });
+    }
+
     handleSearchSubmit = async (searchTerm) => {
         const response = await youtube.get("search", {
             params: {
@@ -32,7 +38,7 @@ class App extends React.Component {
     }
 
     render() {
-        const {selectedVideo} = this.state;
+        const {videos, selectedVideo} = this.state;
 
         return (
             <Grid container justify="center" spacing={2}>
@@ -45,7 +51,7 @@ class App extends React.Component {
                             <VideoDetails video={selectedVideo}/>
                         </Grid>
                         <Grid item xs={4}>
-                            <VideoList />
+                            <VideoList videos={videos} onVideoClick={this.handleVideoClick}/>
                         </Grid>
                     </Grid>
                 </Grid>
