@@ -6,11 +6,6 @@ import youtube from "./api/youtube";
 
 import { SearchBar, VideoDetails, VideoList } from "./components";
 
-const styleGridItem = {
-    //backgroundColor: "",
-    //border: "2px black dotted"
-}
-
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -37,17 +32,19 @@ class App extends React.Component {
     }
 
     render() {
+        const {selectedVideo} = this.state;
+
         return (
             <Grid container justify="center" spacing={2}>
                 <Grid item xs={12}>
                     <Grid container spacing={2}>
-                        <Grid item xs={12} style={styleGridItem}>
+                        <Grid item xs={12}>
                             <SearchBar onFormSubmit={this.handleSearchSubmit}/>
                         </Grid>
-                        <Grid item xs={8} style={styleGridItem}>
-                            <VideoDetails />
+                        <Grid item xs={8}>
+                            <VideoDetails video={selectedVideo}/>
                         </Grid>
-                        <Grid item xs={4} style={styleGridItem}>
+                        <Grid item xs={4}>
                             <VideoList />
                         </Grid>
                     </Grid>
