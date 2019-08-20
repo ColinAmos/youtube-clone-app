@@ -15,6 +15,10 @@ class App extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.handleSearchSubmit("mario");
+    }
+
     handleVideoClick = (video) => {
         this.setState({
             selectedVideo: video
