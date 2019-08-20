@@ -45,19 +45,15 @@ class App extends React.Component {
         const {videos, selectedVideo} = this.state;
 
         return (
-            <Grid container justify="center" spacing={2}>
+            <Grid container spacing={2}>
                 <Grid item xs={12}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12}>
-                            <SearchBar onFormSubmit={this.handleSearchSubmit}/>
-                        </Grid>
-                        <Grid item xs={8}>
-                            <VideoDetails video={selectedVideo}/>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <VideoList videos={videos} onVideoClick={this.handleVideoClick}/>
-                        </Grid>
-                    </Grid>
+                    <SearchBar onFormSubmit={this.handleSearchSubmit}/>
+                </Grid>
+                <Grid item xs={7}>
+                    <VideoDetails video={selectedVideo}/>
+                </Grid>
+                <Grid item xs={5}>
+                    <VideoList videos={videos} onVideoClick={this.handleVideoClick}/>
                 </Grid>
             </Grid>
         )
