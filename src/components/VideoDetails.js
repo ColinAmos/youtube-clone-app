@@ -2,6 +2,8 @@ import React from "react";
 
 import { Paper, Typography } from "@material-ui/core";
 
+import he from "he";
+
 const VideoDetails = ({ video }) => {
     if (!video) return (
         <Typography variant="subtitle1">Loading...</Typography>
@@ -31,9 +33,9 @@ const VideoDetails = ({ video }) => {
                 <iframe frameBorder="0" style={videoIframeStyle} title="Video Player" src={videoSrc}/>
             </Paper>
             <Paper elevation={6} style={{ padding: "15px" }}>
-                <Typography variant="h5">{video.snippet.title}</Typography>
-                <Typography variant="subtitle1">{video.snippet.channelTitle}</Typography>
-                <Typography variant="subtitle2">{video.snippet.description}</Typography>
+                <Typography variant="h5">{he.decode(video.snippet.title)}</Typography>
+                <Typography variant="subtitle1">{he.decode(video.snippet.channelTitle)}</Typography>
+                <Typography variant="subtitle2">{he.decode(video.snippet.description)}</Typography>
             </Paper>
         </React.Fragment>
     )
