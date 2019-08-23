@@ -1,7 +1,8 @@
 {
   "name": "youtube-clone-app",
   "version": "0.1.0",
-  "homepage": "https://colinamos.github.io/youtube-clone-app",
+  "homepage": "./",
+  "main": "public/electron.js",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.3.2",
@@ -12,6 +13,8 @@
     "react-scripts": "3.1.1"
   },
   "devDependencies": {
+    "electron": "^6.0.3",
+    "electron-builder": "^21.2.0",
     "gh-pages": "^2.1.1"
   },
   "scripts": {
@@ -20,10 +23,23 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "estart": "electron .",
+    "preepack": "npm run build",
+    "epack": "electron-builder -c.extraMetadata.main=build/electron.js"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "build": {
+    "appId": "nonExistentID",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories":{
+      "buildResources": "assets"
+    }
   },
   "browserslist": {
     "production": [
